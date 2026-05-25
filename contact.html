@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Let's build something impactful</title>
+    <meta name="description" content="Reach out to discuss your next big project.">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .contact-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: var(--space-3xl);
+        }
+
+        .contact-content {
+            max-width: 800px;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            padding: 1.2rem;
+            font-size: 1.2rem;
+            border-radius: 12px;
+            background-color: var(--surface-color);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-fast);
+        }
+
+        .contact-btn:hover {
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+            transform: translateY(-4px);
+        }
+
+        .contact-btn.primary-method {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+        }
+        
+        .contact-btn.primary-method:hover {
+            background-color: var(--accent-hover);
+            color: white;
+        }
+
+        /* Simple Icon SVG placeholders */
+        .icon-email::before { content: "✉️"; margin-right: 8px; }
+        .icon-whatsapp::before { content: "💬"; margin-right: 8px; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">dimonitedesigns<span>.</span></div>
+        <div class="nav-links">
+            <a href="index.html">Work</a>
+            <a href="index.html#about">About</a>
+            <a href="contact.html" class="active">Contact</a>
+        </div>
+        <a href="contact.html" class="btn btn-primary">Hire me</a>
+    </nav>
+
+    <main class="container">
+        <section class="contact-hero animate-fade-up">
+            <div class="contact-content">
+                <h1 style="font-size: clamp(3rem, 6vw, 4.5rem);">Let’s build something impactful.</h1>
+                <p style="font-size: 1.2rem; margin: var(--space-md) auto; color: var(--text-secondary);">
+                    Ready to elevate your brand or product? Reach out directly. I usually respond within 24 hours.
+                </p>
+
+                <div class="contact-methods animate-fade-up delay-1">
+                    <a href="mailto:hello@example.com" class="contact-btn primary-method icon-email">
+                        hello@example.com
+                    </a>
+                    <a href="https://wa.me/1234567890" target="_blank" class="contact-btn icon-whatsapp">
+                        Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container" style="margin-top: 0;">
+        <div>
+            <div class="logo">dimonitedesigns<span>.</span></div>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Solving problems through design.</p>
+        </div>
+        <div class="nav-links">
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            <a href="https://dribbble.com" target="_blank">Dribbble</a>
+        </div>
+    </footer>
+
+</body>
+</html>

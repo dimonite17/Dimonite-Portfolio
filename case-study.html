@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creatiwise Case Study | Portfolio</title>
+    <meta name="description" content="Case study on the design and strategy for Creatiwise, transforming their digital presence.">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .case-study-hero {
+            padding-top: var(--space-3xl);
+            padding-bottom: var(--space-xl);
+            background-color: var(--surface-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cs-header-meta {
+            display: flex;
+            gap: var(--space-xl);
+            margin-top: var(--space-lg);
+            border-top: 1px solid var(--border-color);
+            padding-top: var(--space-md);
+        }
+
+        .meta-item h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-color);
+            margin-bottom: var(--space-sm);
+        }
+
+        .meta-item p {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0;
+        }
+
+        .cs-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--space-xl);
+            margin-top: var(--space-2xl);
+            padding-bottom: var(--space-2xl);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cs-section:last-child {
+            border-bottom: none;
+        }
+
+        .cs-title-col h2 {
+            font-size: 2.5rem;
+            position: sticky;
+            top: 100px;
+        }
+
+        .cs-content-col p {
+            font-size: 1.2rem;
+            margin-bottom: var(--space-md);
+            max-width: 100%;
+        }
+
+        .cs-image {
+            width: 100%;
+            border-radius: 12px;
+            margin: var(--space-xl) 0;
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Full width break out image */
+        .full-bleed {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            padding: var(--space-xl) 0;
+            background: #fff; /* To contrast the dark mode for the showcase */
+        }
+        
+        .full-bleed img {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .cs-header-meta { flex-direction: column; gap: var(--space-md); }
+            .cs-section { grid-template-columns: 1fr; gap: var(--space-md); }
+            .cs-title-col h2 { position: static; margin-bottom: var(--space-md); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">dimonitedesigns<span>.</span></div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Work</a>
+            <a href="index.html#about">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <a href="contact.html" class="btn btn-primary">Hire me</a>
+    </nav>
+
+    <!-- Case Study Hero -->
+    <header class="case-study-hero">
+        <div class="container animate-fade-up">
+            <h1>Creatiwise Redesign</h1>
+            <p style="font-size: 1.5rem; color: var(--text-primary); max-width: 800px;">Crafting a premium brand and digital experience for a modern design agency.</p>
+            
+            <div class="cs-header-meta">
+                <div class="meta-item">
+                    <h4>Industry</h4>
+                    <p>Creative Agency</p>
+                </div>
+                <div class="meta-item">
+                    <h4>Role</h4>
+                    <p>Lead Product & Brand Designer</p>
+                </div>
+                <div class="meta-item">
+                    <h4>Deliverables</h4>
+                    <p>UI/UX, Branding, Web Design</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- Showcase Main Image (Assuming the UI provided represents the final product) -->
+        <div class="full-bleed animate-fade-up delay-1">
+            <!-- Simulated image placeholder pointing to the idea of the uploaded UI -->
+            <div style="background-color: #f5f5f5; width: 100%; text-align: center; color: #111; padding: var(--space-3xl) 0; font-family: var(--font-heading);">
+                <h2 style="margin-bottom: 0;">Creatiwise UI Showcase</h2>
+                <p style="margin: 0 auto; color: #666; font-family: var(--font-body);">[ The light/dark dynamic UI design is showcased here ]</p>
+            </div>
+        </div>
+
+        <!-- Start Narrative Sections -->
+        <div class="cs-section animate-fade-up delay-2">
+            <div class="cs-title-col">
+                <h2>The Problem</h2>
+            </div>
+            <div class="cs-content-col">
+                <p>Creatiwise, a growing design agency, struggled with a digital presence that didn't reflect the high caliber of their offline work. Their website felt disjointed, lacked a clear hierarchy, and failed to guide potential clients through their service offerings effectively.</p>
+                <p>The core issue wasn't just aesthetic; it was strategic. The positioning didn't communicate their value as "Design Partners"—it merely listed services.</p>
+            </div>
+        </div>
+
+        <div class="cs-section animate-fade-up">
+            <div class="cs-title-col">
+                <h2>The Strategy</h2>
+            </div>
+            <div class="cs-content-col">
+                <p>We pivoted the strategic narrative from "We design things" to "We solve business problems through design." This meant focusing the copy and layout on outcomes: increased growth revenues, strategic partnerships, and seamless digital experiences.</p>
+                <p>Visually, we chose to balance authority with approachability. Using a stark monochromatic base (black and white) allowed their portfolio pieces to pop, while subtle hand-drawn elements (like arrows and circles) added a human, creative touch.</p>
+            </div>
+        </div>
+
+        <div class="cs-section animate-fade-up">
+            <div class="cs-title-col">
+                <h2>Execution</h2>
+            </div>
+            <div class="cs-content-col">
+                <p>The execution involved a complete overhaul of their design system.</p>
+                <ul>
+                    <li style="margin-bottom: var(--space-sm); color: var(--text-secondary);"><strong>Typography:</strong> Implemented a strong geometric sans-serif for confident headlines, paired with a highly legible body font to establish trust and clarity.</li>
+                    <li style="margin-bottom: var(--space-sm); color: var(--text-secondary);"><strong>UI & Layout:</strong> Designed a modular, grid-based layout. The "How we work" section was visualized as a connected, step-by-step process (Define, Design, Build, Launch) using floating card UI to make a complex process feel digestible.</li>
+                    <li style="margin-bottom: var(--space-sm); color: var(--text-secondary);"><strong>Dark Mode Segments:</strong> Integrated high-contrast dark sections within the predominantly light landing page to frame key metrics and case studies, creating a rhythm that keeps the user engaged as they scroll.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cs-section animate-fade-up">
+            <div class="cs-title-col">
+                <h2>The Result</h2>
+            </div>
+            <div class="cs-content-col">
+                <p>The redesigned platform elevated Creatiwise's market positioning. By structuring the portfolio as strategic case studies rather than simple image galleries, the conversion rate for inquiry submissions increased substantially.</p>
+                <p>The new UI established them not just as executioners, but as high-level consultants, successfully aligning their digital presence with their premium service offering.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="container">
+        <div>
+            <div class="logo">dimonitedesigns<span>.</span></div>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Solving problems through design.</p>
+        </div>
+        <div class="nav-links">
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            <a href="https://dribbble.com" target="_blank">Dribbble</a>
+        </div>
+    </footer>
+
+</body>
+</html>

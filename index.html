@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product & Brand Designer | Strategic Problem Solver</title>
+    <meta name="description" content="Portfolio of a high-level Product & Brand Designer focused on strategic problem-solving and driving business results through design.">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ═══════════════════════════════════════
+           GRAIN NOISE OVERLAY
+        ═══════════════════════════════════════ */
+        .grain-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.032;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 180px 180px;
+        }
+
+        /* ═══════════════════════════════════════
+           HERO — GLOW + GRID
+        ═══════════════════════════════════════ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--space-3xl);
+            overflow: hidden;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+        .hero-glow {
+            position: absolute;
+            top: -15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1000px;
+            height: 700px;
+            background: radial-gradient(ellipse at center,
+                rgba(255,90,0,0.14) 0%,
+                rgba(255,90,0,0.05) 38%,
+                transparent 70%);
+            filter: blur(50px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero-glow-secondary {
+            position: absolute;
+            bottom: 0;
+            left: 15%;
+            width: 400px;
+            height: 300px;
+            background: radial-gradient(ellipse at center,
+                rgba(255,90,0,0.06) 0%,
+                transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-headline {
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            margin-bottom: var(--space-md);
+        }
+        .hero-subheadline {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+            max-width: 600px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+        }
+        @media (min-width: 769px) {
+            .hero { padding-top: 0; }
+        }
+
+        /* ═══════════════════════════════════════
+           MARQUEE
+        ═══════════════════════════════════════ */
+        .marquee-section {
+            width: 100%;
+            overflow: hidden;
+            background: #0a0a0a;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 12px 0;
+            position: relative;
+        }
+        .marquee-section::before,
+        .marquee-section::after {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 120px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .marquee-section::before {
+            left: 0;
+            background: linear-gradient(to right, #0a0a0a, transparent);
+        }
+        .marquee-section::after {
+            right: 0;
+            background: linear-gradient(to left, #0a0a0a, transparent);
+        }
+        .marquee-track {
+            display: flex;
+            gap: 12px;
+            width: max-content;
+            animation: marquee-scroll 30s linear infinite;
+        }
+        .marquee-section:hover .marquee-track {
+            animation-play-state: paused;
+        }
+        @keyframes marquee-scroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-card {
+            position: relative;
+            height: 180px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #1a1a1a;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .marquee-card:hover {
+            transform: scale(1.04) translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+        }
+        .marquee-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .marquee-card .marquee-label {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 10px 14px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .marquee-card:hover .marquee-label {
+            opacity: 1;
+        }
+
+        /* ═══════════════════════════════════════
+           SELECTED WORKS — PREMIUM
+        ═══════════════════════════════════════ */
+        .works-section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 3.5rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .works-section-header h2 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .works-count {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.2);
+            letter-spacing: 0.1em;
+            font-family: var(--font-body);
+        }
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            background: rgba(255,255,255,0.04);
+        }
+        .work-card {
+            display: block;
+            position: relative;
+            background: #0a0a0a;
+            text-decoration: none;
+            color: inherit;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+        .work-card:hover {
+            background: #0f0f0f;
+            color: inherit;
+        }
+        .work-card-img-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: #111;
+        }
+        .work-card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+        }
+        .work-card:hover .work-card-img-wrap img {
+            transform: scale(1.05);
+            filter: brightness(0.8);
+        }
+        .work-card-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0);
+            transition: background 0.4s ease;
+            z-index: 2;
+        }
+        .work-card:hover .work-card-overlay {
+            background: rgba(0,0,0,0.2);
+        }
+        .work-card-overlay-pill {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--accent-color);
+            padding: 0.55rem 1.4rem;
+            border-radius: 100px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+        .work-card:hover .work-card-overlay-pill {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .work-card-info {
+            padding: 1.75rem 2rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+        .work-card-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.9rem;
+        }
+        .work-card-number {
+            font-family: var(--font-body);
+            font-size: 0.68rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.18);
+            letter-spacing: 0.12em;
+        }
+        .work-card-cat {
+            font-family: var(--font-body);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+        }
+        .work-card-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.0;
+            color: #fff;
+            margin: 0 0 0.65rem;
+            transition: color 0.3s ease;
+        }
+        .work-card:hover .work-card-title {
+            color: var(--accent-color);
+        }
+        .work-card-desc {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.3);
+            line-height: 1.6;
+            margin: 0;
+        }
+        /* Orange accent underline on hover */
+        .work-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+            transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .work-card:hover::after {
+            width: 100%;
+        }
+        /* ═══════════════════════════════════════
+           ABOUT SECTION IMAGE PREMIUM EFFECT
+        ═══════════════════════════════════════ */
+        .about-image {
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
+            border-radius: 36px;
+            position: relative;
+            border: 1px solid rgba(255, 90, 0, 0.15);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.5),
+                0 0 80px rgba(255, 90, 0, 0.08);
+            overflow: hidden;
+            transform: translateZ(0); /* Force hardware acceleration */
+        }
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 36px;
+            pointer-events: none;
+            box-shadow: inset 0 0 60px rgba(255, 90, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.04); /* Subtle inner reflection */
+        }
+        .about-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            opacity: 1; /* Keep original colors vibrant */
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+        @media (min-width: 769px) {
+            .about-image {
+                margin: 2rem;
+                width: calc(100% - 4rem);
+                height: calc(100% - 4rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .works-grid { grid-template-columns: 1fr; }
+            .work-card-info { padding: 1.25rem 1.5rem 1.5rem; }
+            .about-image {
+                height: 450px;
+                margin-top: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Grain noise overlay -->
+    <div class="grain-overlay" aria-hidden="true"></div>
+
+    <nav>
+        <div class="logo">dimonitedesigns<span>.</span></div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Work</a>
+            <a href="#about">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="contact.html" class="btn btn-primary">Hire me</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero container">
+            <!-- Glow layers -->
+            <div class="hero-glow" aria-hidden="true"></div>
+            <div class="hero-glow-secondary" aria-hidden="true"></div>
+            <div class="hero-content">
+                <h1 class="hero-headline animate-fade-up" style="font-size: 48px; letter-spacing: -0.02em; line-height: 1.2; max-width: 800px; margin-top: 2rem;">I build strategic brands for B2B companies that want clarity, trust, and growth.</h1>
+                <p class="hero-subheadline animate-fade-up delay-1" style="font-size: 1.25rem;">I help startups and businesses create brand identities that communicate clearly, attract the right clients, and position them as industry leaders.</p>
+                <div class="hero-actions animate-fade-up delay-2">
+                    <a href="contact.html" class="btn btn-primary">Start a project</a>
+                    <a href="#projects" class="btn btn-secondary">View work</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Marquee Strip -->
+        <div class="marquee-section">
+            <div class="marquee-track" id="marqueeTrack">
+                <!-- Set 1 -->
+                <div class="marquee-card" style="width:260px;">
+                    <img src="work/mealfy-01.png" alt="Mealfy">
+                    <div class="marquee-label">Mealfy</div>
+                </div>
+                <div class="marquee-card" style="width:320px;">
+                    <img src="work/app 3d.png" alt="App Design">
+                    <div class="marquee-label">App Design</div>
+                </div>
+                <div class="marquee-card" style="width:240px;">
+                    <img src="work/auraawe.png" alt="Auraawe">
+                    <div class="marquee-label">Auraawe</div>
+                </div>
+                <div class="marquee-card" style="width:300px;">
+                    <img src="work/Frame 1.png" alt="Brand Frame">
+                    <div class="marquee-label">Brand Frame</div>
+                </div>
+                <div class="marquee-card" style="width:270px;">
+                    <img src="work/logo rationale-1.png" alt="Logo Rationale">
+                    <div class="marquee-label">Logo Rationale</div>
+                </div>
+                <div class="marquee-card" style="width:350px;">
+                    <img src="work/abiachow together.png" alt="Abiachow">
+                    <div class="marquee-label">Abiachow</div>
+                </div>
+                <div class="marquee-card" style="width:260px;">
+                    <img src="work/drugy.png" alt="Drugy">
+                    <div class="marquee-label">Drugy</div>
+                </div>
+                <!-- Set 2 (duplicate for seamless loop) -->
+                <div class="marquee-card" style="width:260px;">
+                    <img src="work/mealfy-01.png" alt="Mealfy">
+                    <div class="marquee-label">Mealfy</div>
+                </div>
+                <div class="marquee-card" style="width:320px;">
+                    <img src="work/app 3d.png" alt="App Design">
+                    <div class="marquee-label">App Design</div>
+                </div>
+                <div class="marquee-card" style="width:240px;">
+                    <img src="work/auraawe.png" alt="Auraawe">
+                    <div class="marquee-label">Auraawe</div>
+                </div>
+                <div class="marquee-card" style="width:300px;">
+                    <img src="work/Frame 1.png" alt="Brand Frame">
+                    <div class="marquee-label">Brand Frame</div>
+                </div>
+                <div class="marquee-card" style="width:270px;">
+                    <img src="work/logo rationale-1.png" alt="Logo Rationale">
+                    <div class="marquee-label">Logo Rationale</div>
+                </div>
+                <div class="marquee-card" style="width:350px;">
+                    <img src="work/abiachow together.png" alt="Abiachow">
+                    <div class="marquee-label">Abiachow</div>
+                </div>
+                <div class="marquee-card" style="width:260px;">
+                    <img src="work/drugy.png" alt="Drugy">
+                    <div class="marquee-label">Drugy</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section id="about" class="container" style="padding-top: var(--space-xl);">
+            <div class="animate-fade-up grid" style="align-items: stretch;">
+                <div class="about-text" style="max-width: 800px;">
+                    <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 500; white-space: nowrap; margin-bottom: var(--space-md); color: var(--accent-color);">Strategy meets design.</h2>
+                    <div style="font-size: 1.125rem; color: #FFFFFF; line-height: 1.8;">
+                        <p style="margin-bottom: var(--space-md);">I build strategic brand systems for B2B companies that want clarity, trust, and growth.</p>
+                        <p style="margin-bottom: var(--space-md);">Working with startups, tech companies, and service-based businesses, I turn complex ideas into clear and structured brand identities designed to communicate better and scale confidently.</p>
+                        <p style="margin-bottom: var(--space-md);">My approach combines strategy and visual identity to create brands that are not only visually strong, but built for recognition, consistency, and business credibility.</p>
+                        <p>I believe great branding isn’t about being loud it’s about being understood.</p>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="public/8944.jpg" alt="Designer Portrait">
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="container">
+            <h2 class="animate-fade-up" style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: var(--space-xl);">Capabilities</h2>
+            <div class="grid">
+                <!-- Service 1 -->
+                <div class="card animate-fade-up delay-1" style="padding: var(--space-xl); background: var(--surface-color);">
+                    <h3 style="color: var(--accent-color); font-size: 1.5rem; margin-bottom: var(--space-md);">Brand Strategy</h3>
+                    <ul style="list-style: none; color: var(--text-secondary); font-size: 1.125rem;">
+                        <li style="margin-bottom: var(--space-sm); padding-left: 1.5rem; position: relative;"><span style="color: var(--text-primary); position: absolute; left: 0;">&rarr;</span> Positioning</li>
+                        <li style="margin-bottom: var(--space-sm); padding-left: 1.5rem; position: relative;"><span style="color: var(--text-primary); position: absolute; left: 0;">&rarr;</span> Brand direction</li>
+                        <li style="margin-bottom: var(--space-sm); padding-left: 1.5rem; position: relative;"><span style="color: var(--text-primary); position: absolute; left: 0;">&rarr;</span> Messaging foundation</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="card animate-fade-up delay-2" style="padding: var(--space-xl); background: var(--surface-color);">
+                    <h3 style="color: var(--accent-color); font-size: 1.5rem; margin-bottom: var(--space-md);">Visual Identity</h3>
+                    <ul style="list-style: none; color: var(--text-secondary); font-size: 1.125rem;">
+                        <li style="margin-bottom: var(--space-sm); padding-left: 1.5rem; position: relative;"><span style="color: var(--text-primary); position: absolute; left: 0;">&rarr;</span> Logo design</li>
+                        <li style="margin-bottom: var(--space-sm); padding-left: 1.5rem; position: relative;"><span style="color: var(--text-primary); position: absolute; left: 0;">&rarr;</span> Typography & color systems</li>
+                        <li style="margin-bottom: var(--space-sm); padding-left: 1.5rem; position: relative;"><span style="color: var(--text-primary); position: absolute; left: 0;">&rarr;</span> Brand guidelines</li>
+                    </ul>
+                </div>
+                <div class="card animate-fade-up delay-3" style="padding: var(--space-xl); background: var(--surface-color);">
+                    <h3 style="color: var(--accent-color); font-size: 1.5rem; margin-bottom: var(--space-md);">Brand Application</h3>
+                    <ul style="list-style: none; color: var(--text-secondary); font-size: 1.125rem;">
+                        <li style="margin-bottom: var(--space-sm); padding-left: 1.5rem; position: relative;"><span style="color: var(--text-primary); position: absolute; left: 0;">&rarr;</span> Marketing assets</li>
+                        <li style="margin-bottom: var(--space-sm); padding-left: 1.5rem; position: relative;"><span style="color: var(--text-primary); position: absolute; left: 0;">&rarr;</span> Website direction</li>
+                        <li style="margin-bottom: var(--space-sm); padding-left: 1.5rem; position: relative;"><span style="color: var(--text-primary); position: absolute; left: 0;">&rarr;</span> Consistent visuals across platforms</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Works — Premium -->
+        <section id="projects" class="container">
+            <div class="works-section-header animate-fade-up">
+                <h2>Selected Works</h2>
+                <span class="works-count">04 Projects</span>
+            </div>
+            <div class="works-grid">
+
+                <!-- 01 — MEALFY -->
+                <a href="case-study.html" class="work-card animate-fade-up delay-1">
+                    <div class="work-card-img-wrap">
+                        <img src="work/mealfy-01.png" alt="Mealfy">
+                        <div class="work-card-overlay">
+                            <span class="work-card-overlay-pill">View Project</span>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-meta-row">
+                            <span class="work-card-number">01</span>
+                            <span class="work-card-cat">Branding &amp; Product</span>
+                        </div>
+                        <h3 class="work-card-title">Mealfy</h3>
+                        <p class="work-card-desc">A food delivery brand built for trust, clarity, and appetite.</p>
+                    </div>
+                </a>
+
+                <!-- 02 — ABIACHOW -->
+                <a href="#" class="work-card animate-fade-up delay-2">
+                    <div class="work-card-img-wrap">
+                        <img src="work/abiachow together.png" alt="Abiachow">
+                        <div class="work-card-overlay">
+                            <span class="work-card-overlay-pill">View Project</span>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-meta-row">
+                            <span class="work-card-number">02</span>
+                            <span class="work-card-cat">Social Media Design</span>
+                        </div>
+                        <h3 class="work-card-title">Abiachow</h3>
+                        <p class="work-card-desc">Strategic content system for a fast-growing food delivery brand.</p>
+                    </div>
+                </a>
+
+                <!-- 03 — STRYX -->
+                <a href="#" class="work-card animate-fade-up delay-3">
+                    <div class="work-card-img-wrap">
+                        <img src="work/drugy.png" alt="Stryx">
+                        <div class="work-card-overlay">
+                            <span class="work-card-overlay-pill">View Project</span>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-meta-row">
+                            <span class="work-card-number">03</span>
+                            <span class="work-card-cat">Visual Identity</span>
+                        </div>
+                        <h3 class="work-card-title">Stryx</h3>
+                        <p class="work-card-desc">A bold, performance-driven identity for a fitness brand built to dominate.</p>
+                    </div>
+                </a>
+
+                <!-- 04 — AURAAWE -->
+                <a href="#" class="work-card animate-fade-up delay-3">
+                    <div class="work-card-img-wrap">
+                        <img src="work/auraawe.png" alt="Auraawe">
+                        <div class="work-card-overlay">
+                            <span class="work-card-overlay-pill">View Project</span>
+                        </div>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-meta-row">
+                            <span class="work-card-number">04</span>
+                            <span class="work-card-cat">Logo Design</span>
+                        </div>
+                        <h3 class="work-card-title">Auraawe</h3>
+                        <p class="work-card-desc">A minimal mark engineered to communicate confidence and lasting clarity.</p>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="container" style="text-align: center; border-top: 1px solid var(--border-color); margin-top: var(--space-3xl); padding-top: var(--space-3xl); padding-bottom: var(--space-xl);">
+            <div class="animate-fade-up" style="max-width: 600px; margin: 0 auto;">
+                <!-- Alternative CTAs:
+                     1. "Let's turn your confusion into a powerful B2B brand. Let's work together."
+                     2. "Your brand should be your best salesperson. Ready to build it?"
+                -->
+                <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: var(--space-md);">Ready to build a brand that people trust?</h2>
+                <p style="margin: 0 auto var(--space-xl) auto; font-size: 1.25rem;">Let’s talk and see how we can transform your complex ideas into a clear, strategic identity.</p>
+                <a href="contact.html" class="btn btn-primary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">Let’s talk</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container">
+        <div>
+            <div class="logo">dimonitedesigns<span>.</span></div>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Solving problems through design.</p>
+        </div>
+        <div class="nav-links">
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            <a href="https://dribbble.com" target="_blank">Dribbble</a>
+        </div>
+    </footer>
+
+</body>
+</html>

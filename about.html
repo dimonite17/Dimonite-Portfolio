@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Product & Brand Designer</title>
+    <meta name="description" content="About the designer. Relentlessly focused on solving complex business challenges through strategic product and brand design.">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .about-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--space-3xl);
+        }
+        
+        .about-content {
+            max-width: 800px;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+        }
+        
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+            margin-top: var(--space-3xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .value-prop h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">dimonitedesigns<span>.</span></div>
+        <div class="nav-links">
+            <a href="index.html">Work</a>
+            <a href="about.html" class="active">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <a href="contact.html" class="btn btn-primary">Hire me</a>
+    </nav>
+
+    <main class="container">
+        <section class="about-hero animate-fade-up">
+            <div class="about-content">
+                <h1 style="font-size: clamp(3rem, 6vw, 5rem);">I don't just push pixels. I solve <span class="highlight">business problems</span>.</h1>
+                <p style="font-size: 1.5rem; color: var(--text-primary); margin-top: var(--space-lg);">
+                    I am a Product & Brand Designer partnering with forward-thinking companies to build digital experiences that drive clarity, adoption, and revenue.
+                </p>
+                <p style="font-size: 1.2rem; margin-top: var(--space-md);">
+                    Good design is invisible; great design is strategic. My approach fuses deep system thinking with premium aesthetics to ensure your brand doesn't just look good—it performs.
+                </p>
+            </div>
+        </section>
+
+        <section class="animate-fade-up delay-1">
+            <h2>Who I Help & How</h2>
+            <div class="value-props">
+                <div class="value-prop">
+                    <h3>Startups & Founders</h3>
+                    <p>I help early-stage companies find their visual voice and build MVPs that establish trust with investors and early adopters immediately.</p>
+                </div>
+                <div class="value-prop">
+                    <h3>Established Agencies</h3>
+                    <p>I collaborate as a high-level design partner to redesign outdated platforms, unify fragmented design systems, and increase overall user retention.</p>
+                </div>
+                <div class="value-prop">
+                    <h3>SaaS Products</h3>
+                    <p>I untangle complex workflows, clarify product architecture, and design interfaces that reduce churn and boost user satisfaction.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container">
+        <div>
+            <div class="logo">dimonitedesigns<span>.</span></div>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Solving problems through design.</p>
+        </div>
+        <div class="nav-links">
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            <a href="https://dribbble.com" target="_blank">Dribbble</a>
+        </div>
+    </footer>
+
+</body>
+</html>
