@@ -156,10 +156,10 @@
             display: block;
         }
         .logo-img {
-            object-fit: contain !important;
+            object-fit: cover !important;
             object-position: center !important;
             background-color: #ffffff;
-            padding: 12%;
+            padding: 0;
         }
         .marquee-card .marquee-label {
             position: absolute;
@@ -184,14 +184,14 @@
             display: flex;
             align-items: baseline;
             justify-content: space-between;
-            margin-bottom: 3.5rem;
-            padding-bottom: 1.25rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
             border-bottom: 1px solid rgba(255,255,255,0.07);
         }
         .works-section-header h2 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.18em;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--text-secondary);
             margin: 0;
@@ -205,20 +205,25 @@
         .works-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2px;
-            background: rgba(255,255,255,0.04);
+            gap: 32px;
+            background: transparent;
         }
         .work-card {
             display: block;
             position: relative;
-            background: #0a0a0a;
+            background: #0d0d0d;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
             text-decoration: none;
             color: inherit;
             overflow: hidden;
-            transition: background 0.3s ease;
+            transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
         }
         .work-card:hover {
-            background: #0f0f0f;
+            background: #111111;
+            transform: translateY(-6px);
+            border-color: rgba(255, 90, 0, 0.3);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.4);
             color: inherit;
         }
         .work-card-img-wrap {
@@ -315,7 +320,34 @@
             font-size: 0.875rem;
             color: rgba(255,255,255,0.3);
             line-height: 1.6;
-            margin: 0;
+            margin: 0 0 1.25rem;
+        }
+        /* View Case Study button */
+        .cs-btn-wrap {
+            margin-top: 0.5rem;
+        }
+        .cs-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            border-bottom: 1px solid rgba(255,90,0,0.25);
+            padding-bottom: 2px;
+            transition: border-color 0.3s ease, gap 0.3s ease;
+        }
+        .work-card:hover .cs-link-btn {
+            border-color: var(--accent-color);
+        }
+        .cs-arrow {
+            transition: transform 0.3s ease;
+        }
+        .work-card:hover .cs-arrow {
+            transform: translateX(4px);
         }
         /* Orange accent underline on hover */
         .work-card::after {
@@ -379,12 +411,69 @@
         }
 
         @media (max-width: 768px) {
-            .works-grid { grid-template-columns: 1fr; }
-            .work-card-info { padding: 1.25rem 1.5rem 1.5rem; }
+            /* Hero */
+            .hero { min-height: auto; padding-top: 100px; padding-bottom: 3rem; }
+            .hero-content { padding: 0 0.5rem; }
+            .hero-headline { font-size: clamp(1.75rem, 7vw, 2.5rem) !important; line-height: 1.25 !important; max-width: 100% !important; margin-top: 0 !important; }
+            .hero-subheadline { font-size: 1rem !important; margin-bottom: var(--space-md); }
+            .hero-actions { flex-direction: column; width: 100%; gap: 0.75rem; }
+            .hero-actions .btn { width: 100%; text-align: center; justify-content: center; }
+            .hero-glow { width: 500px; height: 350px; }
+            .hero-glow-secondary { width: 200px; height: 150px; }
+
+            /* Marquee */
+            .marquee-card { height: 120px; }
+            .marquee-card[style*="width:320px"] { width: 220px !important; }
+            .marquee-card[style*="width:300px"] { width: 200px !important; }
+            .marquee-card[style*="width:350px"] { width: 240px !important; }
+            .marquee-card[style*="width:270px"] { width: 180px !important; }
+            .marquee-card[style*="width:260px"] { width: 180px !important; }
+            .marquee-card[style*="width:240px"] { width: 160px !important; }
+
+            /* Works grid */
+            .works-grid { grid-template-columns: 1fr; gap: 20px; }
+            .work-card-info { padding: 1.25rem 1.25rem 1.5rem; }
+            .work-card-title { font-size: clamp(1.25rem, 5vw, 1.75rem); }
+            .work-card-desc { font-size: 0.8rem; }
+            .work-card-img-wrap { aspect-ratio: 16/10; }
+            .work-card:hover { transform: none; }
+
+            /* About section */
             .about-image {
-                height: 450px;
-                margin-top: 2.5rem;
+                height: 350px;
+                margin-top: 2rem;
+                border-radius: 20px;
             }
+            .about-image::after { border-radius: 20px; }
+            .about-text h2 { font-size: 1.2rem !important; white-space: normal !important; }
+
+            /* Section headers */
+            .works-section-header h2,
+            .capabilities-header h2,
+            .testimonials-header h2 { font-size: 1.2rem; }
+
+            /* Capabilities */
+            .capabilities-grid { grid-template-columns: 1fr; }
+            .capability-card { padding: 2rem 1.5rem; }
+            .capability-title { font-size: clamp(1.3rem, 4vw, 1.6rem); }
+            .capability-desc { font-size: 0.85rem; margin-bottom: 1.5rem; }
+
+            /* Testimonials */
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .testimonial-card { padding: 2rem 1.5rem; }
+            .testimonial-quote-mark { font-size: 3.5rem; }
+            .testimonial-text { font-size: 0.95rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding-top: 90px; }
+            .hero-headline { font-size: clamp(1.5rem, 8vw, 2rem) !important; }
+            .hero-subheadline { font-size: 0.9rem !important; }
+            .marquee-card { height: 90px; }
+            .about-image { height: 280px; border-radius: 16px; }
+            .about-image::after { border-radius: 16px; }
+            .work-card-info { padding: 1rem; }
+            .work-card-title { font-size: 1.15rem; }
         }
 
         /* ═══════════════════════════════════════
@@ -412,16 +501,16 @@
             display: flex;
             align-items: baseline;
             justify-content: space-between;
-            margin-bottom: 3.5rem;
-            padding-bottom: 1.25rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
             border-bottom: 1px solid rgba(255,255,255,0.07);
             position: relative;
             z-index: 1;
         }
         .testimonials-header h2 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.18em;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--text-secondary);
             margin: 0;
@@ -530,14 +619,14 @@
             display: flex;
             align-items: baseline;
             justify-content: space-between;
-            margin-bottom: 3.5rem;
-            padding-bottom: 1.25rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
             border-bottom: 1px solid rgba(255,255,255,0.07);
         }
         .capabilities-header h2 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.18em;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--text-secondary);
             margin: 0;
@@ -689,6 +778,9 @@
             <a href="contact.html">Contact</a>
             <a href="contact.html" class="btn btn-primary">Hire me</a>
         </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
     <main>
@@ -712,7 +804,7 @@
             <div class="marquee-track" id="marqueeTrack">
                 <!-- Set 1 -->
                 <div class="marquee-card" style="width:320px;">
-                    <img src="work/app 3d.png" alt="Zeravex Logo" class="logo-img" style="background-color: #eeeeee; padding: 15%;">
+                    <img src="work/app 3d.png" alt="Zeravex Logo" class="logo-img">
                     <div class="marquee-label">Zeravex</div>
                 </div>
                 <div class="marquee-card" style="width:240px;">
@@ -737,7 +829,7 @@
                 </div>
                 <!-- Set 2 (duplicate for seamless loop) -->
                 <div class="marquee-card" style="width:320px;">
-                    <img src="work/app 3d.png" alt="Zeravex Logo" class="logo-img" style="background-color: #eeeeee; padding: 15%;">
+                    <img src="work/app 3d.png" alt="Zeravex Logo" class="logo-img">
                     <div class="marquee-label">Zeravex</div>
                 </div>
                 <div class="marquee-card" style="width:240px;">
@@ -767,7 +859,7 @@
         <section id="about" class="container" style="padding-top: var(--space-xl);">
             <div class="animate-fade-up grid" style="align-items: stretch;">
                 <div class="about-text" style="max-width: 800px;">
-                    <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 500; white-space: nowrap; margin-bottom: var(--space-md); color: var(--accent-color);">Strategy meets design.</h2>
+                    <h2 style="font-size: 1.6rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; margin-bottom: var(--space-md); color: var(--text-secondary);">Strategy meets design.</h2>
                     <div style="font-size: 1.125rem; color: #FFFFFF; line-height: 1.8;">
                         <p style="margin-bottom: var(--space-md);">I help B2B businesses turn unclear brands into premium, high-converting identities.</p>
                         <p style="margin-bottom: var(--space-md);">Working with businesses, tech companies, and service-based businesses, I turn complex ideas into clear and structured brand identities designed to communicate better and scale confidently.</p>
@@ -782,16 +874,14 @@
         </section>
 
         <!-- Capabilities Section -->
-        <section id="services" class="container">
+        <section id="services" class="container" style="padding-top: 6rem;">
             <div class="capabilities-header animate-fade-up">
                 <h2>Capabilities</h2>
-                <span class="capabilities-header-count">03 Services</span>
             </div>
             <div class="capabilities-grid">
 
                 <!-- 01 — Brand Strategy -->
                 <div class="capability-card animate-fade-up delay-1">
-                    <span class="capability-label">Service 01</span>
                     <h3 class="capability-title">Brand Strategy</h3>
                     <p class="capability-desc">Helping B2B companies define clear positioning, structure their messaging, and create stronger market perception.</p>
                     <div class="capability-divider"></div>
@@ -805,7 +895,6 @@
 
                 <!-- 02 — Visual Identity -->
                 <div class="capability-card animate-fade-up delay-2">
-                    <span class="capability-label">Service 02</span>
                     <h3 class="capability-title">Visual Identity</h3>
                     <p class="capability-desc">Designing scalable visual systems that communicate professionalism, trust, and consistency across every touchpoint.</p>
                     <div class="capability-divider"></div>
@@ -819,7 +908,6 @@
 
                 <!-- 03 — Brand Application -->
                 <div class="capability-card animate-fade-up delay-3">
-                    <span class="capability-label">Service 03</span>
                     <h3 class="capability-title">Brand Application</h3>
                     <p class="capability-desc">Applying brand identity consistently across digital, social, and marketing experiences.</p>
                     <div class="capability-divider"></div>
@@ -838,25 +926,26 @@
         <section id="projects" class="container">
             <div class="works-section-header animate-fade-up">
                 <h2>Selected Works</h2>
-                <span class="works-count">06 Projects</span>
             </div>
             <div class="works-grid">
 
-                <!-- 01 — MEALFY -->
+                <!-- 01 — ABIACHOW -->
                 <a href="case-study.html" class="work-card animate-fade-up delay-1">
                     <div class="work-card-img-wrap">
                         <img src="work/abiachow logo.png" alt="Abiachow Logo">
                         <div class="work-card-overlay">
-                            <span class="work-card-overlay-pill">View Project</span>
+                            <span class="work-card-overlay-pill">View Case Study</span>
                         </div>
                     </div>
                     <div class="work-card-info">
                         <div class="work-card-meta-row">
-                            <span class="work-card-number">01</span>
-                            <span class="work-card-cat">Branding &amp; Product</span>
+                            <span class="work-card-cat">Visual Identity</span>
                         </div>
-                        <h3 class="work-card-title">Mealfy</h3>
-                        <p class="work-card-desc">A food delivery brand built for trust, clarity, and appetite.</p>
+                        <h3 class="work-card-title">Visual identity for Abiachow</h3>
+                        <p class="work-card-desc">Visual identity for a food and grocery brand</p>
+                        <div class="cs-btn-wrap">
+                            <span class="cs-link-btn">View Case Study</span>
+                        </div>
                     </div>
                 </a>
 
@@ -870,11 +959,10 @@
                     </div>
                     <div class="work-card-info">
                         <div class="work-card-meta-row">
-                            <span class="work-card-number">02</span>
                             <span class="work-card-cat">Social Media Design</span>
                         </div>
                         <h3 class="work-card-title">Abiachow</h3>
-                        <p class="work-card-desc">Strategic content system for a fast-growing food delivery brand.</p>
+                        <p class="work-card-desc">Social media designs designed to build an identity that feels fresh, trustworthy, and impossible to scroll past.</p>
                     </div>
                 </a>
 
@@ -888,10 +976,9 @@
                     </div>
                     <div class="work-card-info">
                         <div class="work-card-meta-row">
-                            <span class="work-card-number">03</span>
-                            <span class="work-card-cat">Visual Identity</span>
+                            <span class="work-card-cat">Social Media Design</span>
                         </div>
-                        <h3 class="work-card-title">Stryx</h3>
+                        <h3 class="work-card-title">Social Media Design for Stryx</h3>
                         <p class="work-card-desc">A bold, performance-driven identity for a fitness brand built to dominate.</p>
                     </div>
                 </a>
@@ -906,11 +993,10 @@
                     </div>
                     <div class="work-card-info">
                         <div class="work-card-meta-row">
-                            <span class="work-card-number">04</span>
                             <span class="work-card-cat">Logo Design</span>
                         </div>
-                        <h3 class="work-card-title">Auraawe</h3>
-                        <p class="work-card-desc">A minimal mark engineered to communicate confidence and lasting clarity.</p>
+                        <h3 class="work-card-title">Logo Design for Aurawear</h3>
+                        <p class="work-card-desc">Bold, futuristic, and edgy identity designed to build trust and strong identity.</p>
                     </div>
                 </a>
                 <!-- 05 — PAYNEX -->
@@ -923,11 +1009,10 @@
                     </div>
                     <div class="work-card-info">
                         <div class="work-card-meta-row">
-                            <span class="work-card-number">05</span>
-                            <span class="work-card-cat">Branding &amp; Product</span>
+                            <span class="work-card-cat">Brand Identity</span>
                         </div>
-                        <h3 class="work-card-title">Paynex</h3>
-                        <p class="work-card-desc">Strategic visual identity and digital experience.</p>
+                        <h3 class="work-card-title">Brand Identity for Paynex</h3>
+                        <p class="work-card-desc">Strategic Brand Identity designed to build trust.</p>
                     </div>
                 </a>
 
@@ -941,11 +1026,10 @@
                     </div>
                     <div class="work-card-info">
                         <div class="work-card-meta-row">
-                            <span class="work-card-number">06</span>
-                            <span class="work-card-cat">Visual Identity</span>
+                            <span class="work-card-cat">Brand Identity</span>
                         </div>
-                        <h3 class="work-card-title">Goway</h3>
-                        <p class="work-card-desc">A modern and clear brand identity built for growth.</p>
+                        <h3 class="work-card-title">Brand Identity Design Goway</h3>
+                        <p class="work-card-desc">Goway Logistics a modern clear brand identity built for growth.</p>
                     </div>
                 </a>
 
@@ -953,10 +1037,9 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials-section container">
+        <section id="testimonials" class="testimonials-section container" style="padding-top: 6rem;">
             <div class="testimonials-header animate-fade-up">
                 <h2>What clients say</h2>
-                <span class="testimonials-header-accent">03 Voices</span>
             </div>
             <div class="testimonials-grid">
 
@@ -1000,30 +1083,63 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="container" style="text-align: center; border-top: 1px solid var(--border-color); margin-top: var(--space-3xl); padding-top: var(--space-3xl); padding-bottom: var(--space-xl);">
-            <div class="animate-fade-up" style="max-width: 600px; margin: 0 auto;">
-                <!-- Alternative CTAs:
-                     1. "Let's turn your confusion into a powerful B2B brand. Let's work together."
-                     2. "Your brand should be your best salesperson. Ready to build it?"
+        <section class="cta-section">
+            <div class="cta-glow" aria-hidden="true"></div>
+            <div class="container cta-container animate-fade-up">
+                <!-- Alternative Headlines:
+                     1. "Your brand is your business. Let's make it undeniable."
+                     2. "Stop blending in. Start building a brand that leads."
                 -->
-                <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: var(--space-md);">Ready to build a brand that people trust?</h2>
-                <p style="margin: 0 auto var(--space-xl) auto; font-size: 1.25rem;">Let’s talk and see how we can transform your complex ideas into a clear, strategic identity.</p>
-                <a href="contact.html" class="btn btn-primary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">Let’s talk</a>
+                <h2 class="cta-headline">Clarity. Trust. Recognition. Let's build all three.</h2>
+                <p class="cta-desc">I partner with founders, startups, and growing businesses to create strategic brand systems that communicate clearly, build trust, and support long-term growth.</p>
+                
+                <a href="contact.html" class="btn btn-primary cta-btn">Start a Project</a>
+                
+                <div class="cta-availability">
+                    <span class="availability-dot"></span> Currently accepting new client projects.
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="container">
-        <div>
-            <div class="logo">dimonitedesigns<span>.</span></div>
-            <p style="margin-top: 1rem; font-size: 0.9rem;">Solving problems through design.</p>
-        </div>
-        <div class="nav-links">
-            <a href="https://twitter.com" target="_blank">Twitter</a>
-            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-            <a href="https://dribbble.com" target="_blank">Dribbble</a>
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="logo">dimonitedesigns<span>.</span></div>
+                <!-- Alternative Footer Taglines:
+                     1. "Building brands that drive business forward."
+                     2. "Design that works as hard as your business."
+                -->
+                <p class="footer-tagline">Strategic branding for ambitious B2B companies.</p>
+            </div>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/imo-blessed-chigozirim-502985322/" target="_blank" class="social-link">LinkedIn <span class="arrow">↗</span></a>
+                <a href="https://x.com/BlessedImo6328" target="_blank" class="social-link">X <span class="arrow">↗</span></a>
+                <a href="https://www.instagram.com/dimonite_designs" target="_blank" class="social-link">Instagram <span class="arrow">↗</span></a>
+                <a href="https://www.behance.net/dimonite" target="_blank" class="social-link">Behance <span class="arrow">↗</span></a>
+                <a href="mailto:workwithdimonite@gmail.com" class="social-link">Email <span class="arrow">↗</span></a>
+            </div>
         </div>
     </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+            document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
 
 </body>
 </html>

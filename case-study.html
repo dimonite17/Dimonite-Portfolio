@@ -3,202 +3,1010 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creatiwise Case Study | Portfolio</title>
-    <meta name="description" content="Case study on the design and strategy for Creatiwise, transforming their digital presence.">
+    <title>Abiachow — Brand Identity Case Study | Dimonite Designs</title>
+    <meta name="description" content="How strategic brand identity design helped Abiachow build a modern, trustworthy food delivery brand focused on convenience and everyday accessibility.">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .case-study-hero {
-            padding-top: var(--space-3xl);
-            padding-bottom: var(--space-xl);
-            background-color: var(--surface-color);
-            border-bottom: 1px solid var(--border-color);
+        /* ═══════════════════════════════════════
+           GRAIN OVERLAY
+        ═══════════════════════════════════════ */
+        .grain-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.032;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 180px 180px;
         }
 
-        .cs-header-meta {
-            display: flex;
-            gap: var(--space-xl);
-            margin-top: var(--space-lg);
-            border-top: 1px solid var(--border-color);
-            padding-top: var(--space-md);
+        /* ═══════════════════════════════════════
+           NAV OVERRIDE FOR CASE STUDY
+        ═══════════════════════════════════════ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(10,10,10,0.85);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            max-width: 100%;
+            padding: 1.25rem 2rem;
         }
+        nav .logo { font-size: 1.2rem; }
 
-        .meta-item h4 {
+        /* ═══════════════════════════════════════
+           BACK LINK
+        ═══════════════════════════════════════ */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-body);
             font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            color: rgba(255,255,255,0.4);
+            transition: color 0.3s ease;
+            margin-bottom: 3rem;
+        }
+        .back-link:hover { color: var(--accent-color); }
+        .back-link svg { transition: transform 0.3s ease; }
+        .back-link:hover svg { transform: translateX(-4px); }
+
+        /* ═══════════════════════════════════════
+           SECTION LABEL (shared)
+        ═══════════════════════════════════════ */
+        .cs-label {
+            font-family: var(--font-body);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
             color: var(--accent-color);
-            margin-bottom: var(--space-sm);
+            opacity: 0.8;
+            margin-bottom: 1.25rem;
+            display: block;
         }
 
-        .meta-item p {
+        /* ═══════════════════════════════════════
+           SECTION 1 — HERO
+        ═══════════════════════════════════════ */
+        .cs-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-top: 120px;
+            padding-bottom: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .cs-hero-glow {
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(ellipse at center, rgba(255,90,0,0.1) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .cs-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+            width: 100%;
+        }
+        .cs-hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(4rem, 10vw, 9rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+            color: #fff;
+            margin: 0 0 2rem;
+        }
+        .cs-hero-summary {
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            color: rgba(255,255,255,0.5);
+            max-width: 580px;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .cs-hero-image {
+            width: 100%;
+            max-height: 75vh;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            margin-top: 4rem;
+        }
+
+        /* ═══════════════════════════════════════
+           SECTION 2 — OVERVIEW
+        ═══════════════════════════════════════ */
+        .cs-overview {
+            padding: 6rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5px;
+            background: rgba(255,255,255,0.04);
+            margin-top: 2.5rem;
+        }
+        .overview-item {
+            background: #0a0a0a;
+            padding: 2.5rem 2rem;
+            transition: background 0.3s ease;
+        }
+        .overview-item:hover { background: #0d0d0d; }
+        .overview-item-label {
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            opacity: 0.7;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .overview-item-value {
+            font-family: var(--font-heading);
             font-size: 1rem;
-            color: var(--text-primary);
-            margin-bottom: 0;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.4;
         }
 
-        .cs-section {
+        /* ═══════════════════════════════════════
+           SHARED — TWO-COL EDITORIAL SECTION
+        ═══════════════════════════════════════ */
+        .cs-two-col {
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: var(--space-xl);
-            margin-top: var(--space-2xl);
-            padding-bottom: var(--space-2xl);
-            border-bottom: 1px solid var(--border-color);
+            padding: 6rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-
-        .cs-section:last-child {
-            border-bottom: none;
-        }
-
-        .cs-title-col h2 {
-            font-size: 2.5rem;
+        .cs-sticky-col h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 3vw, 2.75rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+            color: #fff;
             position: sticky;
             top: 100px;
         }
-
-        .cs-content-col p {
-            font-size: 1.2rem;
-            margin-bottom: var(--space-md);
+        .cs-body-col p {
+            font-size: 1.125rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.85;
             max-width: 100%;
+            margin-bottom: 1.75rem;
+        }
+        .cs-body-col p:last-child { margin-bottom: 0; }
+        .cs-body-col strong {
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
         }
 
-        .cs-image {
+        /* Pull quote */
+        .cs-pull-quote {
+            border-left: 2px solid var(--accent-color);
+            padding: 1.5rem 2rem;
+            margin: 2.5rem 0;
+            background: rgba(255,90,0,0.04);
+            border-radius: 0 8px 8px 0;
+        }
+        .cs-pull-quote p {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: rgba(255,255,255,0.85) !important;
+            font-style: italic;
+            margin: 0 !important;
+        }
+
+        /* Strategy points list */
+        .cs-strategy-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .cs-strategy-list li {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+        .cs-strategy-num {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--accent-color);
+            padding-top: 0.3rem;
+            flex-shrink: 0;
+        }
+        .cs-strategy-text {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+        }
+        .cs-strategy-text strong {
+            color: rgba(255,255,255,0.9);
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        /* ═══════════════════════════════════════
+           SECTION 5 — LOGO SYSTEM
+        ═══════════════════════════════════════ */
+        .logo-system-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5px;
+            background: rgba(255,255,255,0.04);
+            margin-top: 3rem;
+        }
+        .logo-panel {
+            background: #0a0a0a;
+            padding: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 4/3;
+            position: relative;
+            overflow: hidden;
+        }
+        .logo-panel.dark { background: #050505; }
+        .logo-panel.light { background: #f5f5f5; }
+        .logo-panel img {
+            max-width: 70%;
+            max-height: 70%;
+            object-fit: contain;
+        }
+        .logo-panel-label {
+            position: absolute;
+            bottom: 1.25rem;
+            left: 1.5rem;
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.25);
+        }
+        .logo-panel.light .logo-panel-label {
+            color: rgba(0,0,0,0.25);
+        }
+
+        /* ═══════════════════════════════════════
+           SECTION 6 — VISUAL IDENTITY
+        ═══════════════════════════════════════ */
+        /* Color palette */
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5px;
+            background: rgba(255,255,255,0.04);
+            margin-top: 3rem;
+            margin-bottom: 4rem;
+        }
+        .palette-swatch {
+            padding: 0;
+        }
+        .swatch-color {
+            height: 140px;
+        }
+        .swatch-info {
+            padding: 1.25rem 1.5rem;
+            background: #0a0a0a;
+        }
+        .swatch-name {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+        .swatch-hex {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.35);
+        }
+        /* Typography showcase */
+        .type-showcase {
+            padding: 4rem;
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+        .type-heading-display {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 6vw, 6rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+        .type-meta {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            opacity: 0.7;
+            margin-bottom: 2rem;
+        }
+        .type-body-display {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.8;
+            max-width: 60ch;
+        }
+
+        /* ═══════════════════════════════════════
+           SECTION 7 — BRAND APPLICATIONS
+        ═══════════════════════════════════════ */
+        .applications-full {
+            padding: 6rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .app-image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 3rem;
+        }
+        .app-image-grid .wide {
+            grid-column: span 2;
+        }
+        .app-img-wrap {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #111;
+        }
+        .app-img-wrap img {
             width: 100%;
-            border-radius: 12px;
-            margin: var(--space-xl) 0;
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+        }
+        .app-img-wrap:hover img { transform: scale(1.04); }
+        .app-img-wrap.tall { aspect-ratio: 3/4; }
+        .app-img-wrap.wide-rect { aspect-ratio: 16/7; }
+
+        /* ═══════════════════════════════════════
+           SECTION 8 — OUTCOME
+        ═══════════════════════════════════════ */
+        .cs-outcome {
+            padding: 6rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .outcome-points {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5px;
+            background: rgba(255,255,255,0.04);
+            margin-top: 3rem;
+        }
+        .outcome-point {
+            background: #0a0a0a;
+            padding: 3rem 2.5rem;
+            transition: background 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .outcome-point::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0%; height: 2px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+            transition: width 0.6s cubic-bezier(0.16,1,0.3,1);
+        }
+        .outcome-point:hover::after { width: 100%; }
+        .outcome-point:hover { background: #0d0d0d; }
+        .outcome-num {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: rgba(255,90,0,0.15);
+            line-height: 1;
+            margin-bottom: 1rem;
+            transition: color 0.4s ease;
+        }
+        .outcome-point:hover .outcome-num { color: rgba(255,90,0,0.28); }
+        .outcome-title {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.75rem;
+        }
+        .outcome-desc {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.7;
         }
 
-        /* Full width break out image */
-        .full-bleed {
+        /* ═══════════════════════════════════════
+           SECTION 9 — NEXT PROJECT
+        ═══════════════════════════════════════ */
+        .cs-next {
+            padding: 6rem 0 4rem;
+        }
+        .next-project-link {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            background: #0d0d0d;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: border-color 0.4s ease;
+            margin-top: 2.5rem;
+        }
+        .next-project-link:hover {
+            border-color: rgba(255,90,0,0.3);
+            color: inherit;
+        }
+        .next-img-wrap {
+            width: 100%;
+            aspect-ratio: 16/6;
+            overflow: hidden;
+        }
+        .next-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top left;
+            display: block;
+            transition: transform 0.8s cubic-bezier(0.16,1,0.3,1), filter 0.5s ease;
+            filter: brightness(0.6);
+        }
+        .next-project-link:hover .next-img-wrap img {
+            transform: scale(1.04);
+            filter: brightness(0.7);
+        }
+        .next-info {
+            padding: 2.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .next-meta-label {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+        .next-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #fff;
+        }
+        .next-arrow {
+            font-size: 2rem;
+            color: rgba(255,255,255,0.2);
+            transition: transform 0.4s ease, color 0.4s ease;
+        }
+        .next-project-link:hover .next-arrow {
+            transform: translateX(8px);
+            color: var(--accent-color);
+        }
+
+        /* ═══════════════════════════════════════
+           FULL BLEED IMAGE
+        ═══════════════════════════════════════ */
+        .full-bleed-wrap {
             width: 100vw;
             position: relative;
             left: 50%;
             right: 50%;
             margin-left: -50vw;
             margin-right: -50vw;
-            padding: var(--space-xl) 0;
-            background: #fff; /* To contrast the dark mode for the showcase */
         }
-        
-        .full-bleed img {
+        .full-bleed-wrap img {
             width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
+            height: auto;
             display: block;
+            object-fit: cover;
         }
 
+        /* ═══════════════════════════════════════
+           DIVIDER
+        ═══════════════════════════════════════ */
+        .cs-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255,255,255,0.05);
+            margin: 0;
+        }
+
+        /* ═══════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════ */
+        .site-footer {
+            padding: var(--space-2xl) 0 var(--space-xl);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: #050505;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .footer-brand .logo { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .footer-tagline { font-size: 1rem; color: rgba(255,255,255,0.4); margin: 0; }
+        .footer-socials { display: flex; gap: 2rem; }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.5);
+            transition: color 0.3s ease, transform 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .social-link .arrow { font-size: 1.1rem; transition: transform 0.3s ease, color 0.3s ease; color: rgba(255,255,255,0.2); }
+        .social-link:hover { color: #fff; transform: translateY(-2px); }
+        .social-link:hover .arrow { transform: translate(3px, -3px); color: var(--accent-color); }
+
+        /* ═══════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════ */
+        @media (max-width: 900px) {
+            .cs-two-col { grid-template-columns: 1fr; }
+            .cs-sticky-col h2 { position: static; margin-bottom: 1.5rem; }
+            .overview-grid { grid-template-columns: repeat(2, 1fr); }
+            .outcome-points { grid-template-columns: 1fr; }
+            .logo-system-grid { grid-template-columns: 1fr; }
+            .palette-grid { grid-template-columns: repeat(2, 1fr); }
+            .app-image-grid { grid-template-columns: 1fr; }
+            .app-image-grid .wide { grid-column: span 1; }
+        }
         @media (max-width: 768px) {
-            .cs-header-meta { flex-direction: column; gap: var(--space-md); }
-            .cs-section { grid-template-columns: 1fr; gap: var(--space-md); }
-            .cs-title-col h2 { position: static; margin-bottom: var(--space-md); }
+            /* Hero */
+            .cs-hero { min-height: auto; padding-top: 90px; padding-bottom: 0; }
+            .cs-hero-content { padding: 0 1rem 2rem; }
+            .cs-hero-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+            .cs-hero-summary { font-size: 1rem; }
+            .cs-hero-image { margin-top: 2rem; }
+
+            /* Overview */
+            .cs-overview { padding: 3rem 0; }
+            .overview-grid { grid-template-columns: 1fr; }
+            .overview-item { padding: 1.5rem 1.25rem; }
+
+            /* Two column sections */
+            .cs-two-col { padding: 3rem 0; gap: 1.5rem; }
+            .cs-body-col p { font-size: 1rem; }
+            .cs-pull-quote { padding: 1rem 1.25rem; margin: 1.5rem 0; }
+            .cs-pull-quote p { font-size: 1.1rem !important; }
+
+            /* Logo panels */
+            .logo-panel { padding: 2.5rem; aspect-ratio: 3/2; }
+
+            /* Palette */
+            .palette-grid { grid-template-columns: repeat(2, 1fr); }
+            .swatch-color { height: 100px; }
+            .swatch-info { padding: 1rem; }
+
+            /* Type showcase */
+            .type-showcase { padding: 2rem 1.5rem; }
+            .type-heading-display { font-size: clamp(2rem, 8vw, 3rem) !important; }
+
+            /* Applications */
+            .applications-full { padding: 3rem 0; }
+            .app-image-grid { gap: 8px; margin-top: 1.5rem; }
+
+            /* Outcome */
+            .cs-outcome { padding: 3rem 0; }
+            .outcome-point { padding: 2rem 1.5rem; }
+            .outcome-num { font-size: 2.5rem; }
+
+            /* Next project */
+            .cs-next { padding: 3rem 0 2rem; }
+            .next-info { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.5rem; }
+            .next-img-wrap { aspect-ratio: 16/9; }
+
+            /* Footer */
+            .footer-container { flex-direction: column; gap: 2rem; align-items: flex-start; }
+            .footer-socials { flex-wrap: wrap; gap: 1rem; }
+
+            /* Nav override — let shared style.css handle it */
+            nav { padding: 1rem !important; }
+
+            /* Strategy list */
+            .cs-strategy-list li { gap: 0.75rem; }
+            .cs-strategy-text { font-size: 0.95rem; }
+
+            /* Back link */
+            .back-link { margin-bottom: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .cs-hero-title { font-size: clamp(2rem, 14vw, 3rem); }
+            .overview-item { padding: 1.25rem 1rem; }
+            .palette-grid { grid-template-columns: 1fr; }
+            .outcome-point { padding: 1.5rem 1.25rem; }
+            .next-info { padding: 1.25rem; }
         }
     </style>
 </head>
 <body>
+    <div class="grain-overlay" aria-hidden="true"></div>
 
+    <!-- Navigation -->
     <nav>
-        <div class="logo">dimonitedesigns<span>.</span></div>
+        <a href="index.html" class="logo">dimonitedesigns<span>.</span></a>
         <div class="nav-links">
-            <a href="index.html" class="active">Work</a>
+            <a href="index.html">Work</a>
             <a href="index.html#about">About</a>
             <a href="contact.html">Contact</a>
+            <a href="contact.html" class="btn btn-primary">Hire me</a>
         </div>
-        <a href="contact.html" class="btn btn-primary">Hire me</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
-    <!-- Case Study Hero -->
-    <header class="case-study-hero">
-        <div class="container animate-fade-up">
-            <h1>Creatiwise Redesign</h1>
-            <p style="font-size: 1.5rem; color: var(--text-primary); max-width: 800px;">Crafting a premium brand and digital experience for a modern design agency.</p>
-            
-            <div class="cs-header-meta">
-                <div class="meta-item">
-                    <h4>Industry</h4>
-                    <p>Creative Agency</p>
+    <main>
+
+        <!-- ═══════════════════════════════════════
+             SECTION 1 — HERO
+        ═══════════════════════════════════════ -->
+        <section class="cs-hero">
+            <div class="cs-hero-glow" aria-hidden="true"></div>
+            <div class="cs-hero-content animate-fade-up">
+                <a href="index.html#projects" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    All Projects
+                </a>
+                <span class="cs-label">Brand Identity</span>
+                <h1 class="cs-hero-title">Abiachow</h1>
+                <p class="cs-hero-summary">Building a modern food delivery brand focused on convenience, trust, and everyday accessibility.</p>
+            </div>
+            <img src="work/abiachow social media designs.png" alt="Abiachow Brand Application" class="cs-hero-image animate-fade-up delay-2">
+        </section>
+
+        <!-- ═══════════════════════════════════════
+             SECTION 2 — PROJECT OVERVIEW
+        ═══════════════════════════════════════ -->
+        <section class="cs-overview container animate-fade-up">
+            <span class="cs-label">Project Overview</span>
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <span class="overview-item-label">Industry</span>
+                    <div class="overview-item-value">Food & Delivery</div>
                 </div>
-                <div class="meta-item">
-                    <h4>Role</h4>
-                    <p>Lead Product & Brand Designer</p>
+                <div class="overview-item">
+                    <span class="overview-item-label">Services</span>
+                    <div class="overview-item-value">Brand Strategy<br>Visual Identity<br>Social Media Design</div>
                 </div>
-                <div class="meta-item">
-                    <h4>Deliverables</h4>
-                    <p>UI/UX, Branding, Web Design</p>
+                <div class="overview-item">
+                    <span class="overview-item-label">Timeline</span>
+                    <div class="overview-item-value">4 Weeks</div>
+                </div>
+                <div class="overview-item">
+                    <span class="overview-item-label">Deliverables</span>
+                    <div class="overview-item-value">Logo System<br>Brand Guidelines<br>Social Assets</div>
+                </div>
+                <div class="overview-item">
+                    <span class="overview-item-label">Goal</span>
+                    <div class="overview-item-value">Build a recognisable, trustworthy identity for a modern food brand</div>
                 </div>
             </div>
-        </div>
-    </header>
+        </section>
 
-    <main class="container">
-        
-        <!-- Showcase Main Image (Assuming the UI provided represents the final product) -->
-        <div class="full-bleed animate-fade-up delay-1">
-            <!-- Simulated image placeholder pointing to the idea of the uploaded UI -->
-            <div style="background-color: #f5f5f5; width: 100%; text-align: center; color: #111; padding: var(--space-3xl) 0; font-family: var(--font-heading);">
-                <h2 style="margin-bottom: 0;">Creatiwise UI Showcase</h2>
-                <p style="margin: 0 auto; color: #666; font-family: var(--font-body);">[ The light/dark dynamic UI design is showcased here ]</p>
+        <!-- ═══════════════════════════════════════
+             SECTION 3 — THE CHALLENGE
+        ═══════════════════════════════════════ -->
+        <section class="container">
+            <div class="cs-two-col animate-fade-up">
+                <div class="cs-sticky-col">
+                    <span class="cs-label">The Challenge</span>
+                    <h2>A crowded market with no clear voice.</h2>
+                </div>
+                <div class="cs-body-col">
+                    <p>The food delivery space is one of the most saturated categories in consumer markets. Abiachow entered with a strong product but no visual or strategic identity to differentiate itself from dozens of competitors offering similar services.</p>
+                    <p>Without a coherent brand, the business struggled to communicate what made it different — not just in what it delivered, but in <strong>how it made customers feel</strong>. There was no emotional connection, no recognisable visual language, and no framework to build consistency across touchpoints.</p>
+                    <div class="cs-pull-quote">
+                        <p>"The product was ready. The brand wasn't. That gap was costing them trust before the first order was even placed."</p>
+                    </div>
+                    <p>The opportunity was clear: build a brand system that felt modern, warm, and credible — one that could earn trust quickly and scale as the business grew.</p>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Start Narrative Sections -->
-        <div class="cs-section animate-fade-up delay-2">
-            <div class="cs-title-col">
-                <h2>The Problem</h2>
+        <!-- ═══════════════════════════════════════
+             SECTION 4 — STRATEGIC APPROACH
+        ═══════════════════════════════════════ -->
+        <section class="container">
+            <div class="cs-two-col animate-fade-up">
+                <div class="cs-sticky-col">
+                    <span class="cs-label">Strategic Approach</span>
+                    <h2>Positioning through clarity, not noise.</h2>
+                </div>
+                <div class="cs-body-col">
+                    <p>The strategy began with a single question: <strong>What does Abiachow need people to feel?</strong> Convenience. Familiarity. Confidence. Those three words became the filter for every decision — visual, verbal, and structural.</p>
+                    <p>Rather than competing on loudness with flashy visuals, the brand was positioned as the <strong>reliable everyday choice</strong> — approachable enough for daily use, polished enough to build trust.</p>
+                    <ul class="cs-strategy-list">
+                        <li>
+                            <span class="cs-strategy-num">01</span>
+                            <span class="cs-strategy-text"><strong>Brand Positioning</strong>The everyday food delivery brand that feels as good as the meal itself. Warm, accessible, and dependable.</span>
+                        </li>
+                        <li>
+                            <span class="cs-strategy-num">02</span>
+                            <span class="cs-strategy-text"><strong>Communication Goals</strong>Lead with appetite appeal and emotional warmth. Let the visuals do the selling before a word is read.</span>
+                        </li>
+                        <li>
+                            <span class="cs-strategy-num">03</span>
+                            <span class="cs-strategy-text"><strong>Audience Perception</strong>Position the brand as a trusted local partner — not a faceless delivery app. Build familiarity through consistency.</span>
+                        </li>
+                        <li>
+                            <span class="cs-strategy-num">04</span>
+                            <span class="cs-strategy-text"><strong>Visual Direction</strong>Energetic yet structured. Warm tones, bold type, and clean layouts that communicate speed without sacrificing quality.</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="cs-content-col">
-                <p>Creatiwise, a growing design agency, struggled with a digital presence that didn't reflect the high caliber of their offline work. Their website felt disjointed, lacked a clear hierarchy, and failed to guide potential clients through their service offerings effectively.</p>
-                <p>The core issue wasn't just aesthetic; it was strategic. The positioning didn't communicate their value as "Design Partners"—it merely listed services.</p>
-            </div>
-        </div>
+        </section>
 
-        <div class="cs-section animate-fade-up">
-            <div class="cs-title-col">
-                <h2>The Strategy</h2>
+        <!-- ═══════════════════════════════════════
+             SECTION 5 — LOGO SYSTEM
+        ═══════════════════════════════════════ -->
+        <section class="container animate-fade-up">
+            <span class="cs-label">Logo System</span>
+            <div class="cs-two-col" style="padding-top:2rem; border:none;">
+                <div class="cs-sticky-col">
+                    <h2>Mark, meaning, and construction.</h2>
+                </div>
+                <div class="cs-body-col">
+                    <p>The logo was designed to feel expressive and ownable — something that could stand alone as a symbol or sit beside wordmarks across all applications. The mark draws from the energy and warmth of food culture, communicating appetite and movement.</p>
+                    <p>Construction was intentional: every curve and proportion was designed for <strong>scalability across digital and physical applications</strong> — from app icons to packaging.</p>
+                </div>
             </div>
-            <div class="cs-content-col">
-                <p>We pivoted the strategic narrative from "We design things" to "We solve business problems through design." This meant focusing the copy and layout on outcomes: increased growth revenues, strategic partnerships, and seamless digital experiences.</p>
-                <p>Visually, we chose to balance authority with approachability. Using a stark monochromatic base (black and white) allowed their portfolio pieces to pop, while subtle hand-drawn elements (like arrows and circles) added a human, creative touch.</p>
+            <div class="logo-system-grid">
+                <div class="logo-panel dark">
+                    <img src="work/abiachow logo.png" alt="Abiachow Logo on Dark">
+                    <span class="logo-panel-label">Primary — Dark</span>
+                </div>
+                <div class="logo-panel light">
+                    <img src="work/abiachow logo.png" alt="Abiachow Logo on Light">
+                    <span class="logo-panel-label">Primary — Light</span>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="cs-section animate-fade-up">
-            <div class="cs-title-col">
-                <h2>Execution</h2>
+        <!-- ═══════════════════════════════════════
+             SECTION 6 — VISUAL IDENTITY
+        ═══════════════════════════════════════ -->
+        <section class="container animate-fade-up" style="padding-top: 6rem;">
+            <span class="cs-label">Visual Identity</span>
+            <div class="cs-two-col" style="padding-top:2rem; border:none; margin-bottom: 1rem;">
+                <div class="cs-sticky-col">
+                    <h2>A system built to scale.</h2>
+                </div>
+                <div class="cs-body-col">
+                    <p>The visual identity system was built around a warm, energetic palette and a typographic hierarchy that communicates clearly at every size. Every element — from colour to type to layout — was chosen to reinforce the brand's positioning of warmth, speed, and trust.</p>
+                </div>
             </div>
-            <div class="cs-content-col">
-                <p>The execution involved a complete overhaul of their design system.</p>
-                <ul>
-                    <li style="margin-bottom: var(--space-sm); color: var(--text-secondary);"><strong>Typography:</strong> Implemented a strong geometric sans-serif for confident headlines, paired with a highly legible body font to establish trust and clarity.</li>
-                    <li style="margin-bottom: var(--space-sm); color: var(--text-secondary);"><strong>UI & Layout:</strong> Designed a modular, grid-based layout. The "How we work" section was visualized as a connected, step-by-step process (Define, Design, Build, Launch) using floating card UI to make a complex process feel digestible.</li>
-                    <li style="margin-bottom: var(--space-sm); color: var(--text-secondary);"><strong>Dark Mode Segments:</strong> Integrated high-contrast dark sections within the predominantly light landing page to frame key metrics and case studies, creating a rhythm that keeps the user engaged as they scroll.</li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="cs-section animate-fade-up">
-            <div class="cs-title-col">
-                <h2>The Result</h2>
+            <!-- Color Palette -->
+            <p style="font-size:0.7rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:0;">Colour Palette</p>
+            <div class="palette-grid">
+                <div class="palette-swatch">
+                    <div class="swatch-color" style="background:#E8420A;"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Flame Orange</div>
+                        <div class="swatch-hex">#E8420A — Primary</div>
+                    </div>
+                </div>
+                <div class="palette-swatch">
+                    <div class="swatch-color" style="background:#1A1A1A;"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Deep Black</div>
+                        <div class="swatch-hex">#1A1A1A — Secondary</div>
+                    </div>
+                </div>
+                <div class="palette-swatch">
+                    <div class="swatch-color" style="background:#FFF5EC;"></div>
+                    <div class="swatch-info" style="background:#0a0a0a;">
+                        <div class="swatch-name">Warm Cream</div>
+                        <div class="swatch-hex">#FFF5EC — Neutral</div>
+                    </div>
+                </div>
+                <div class="palette-swatch">
+                    <div class="swatch-color" style="background:#3DAB6B;"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Fresh Green</div>
+                        <div class="swatch-hex">#3DAB6B — Accent</div>
+                    </div>
+                </div>
             </div>
-            <div class="cs-content-col">
-                <p>The redesigned platform elevated Creatiwise's market positioning. By structuring the portfolio as strategic case studies rather than simple image galleries, the conversion rate for inquiry submissions increased substantially.</p>
-                <p>The new UI established them not just as executioners, but as high-level consultants, successfully aligning their digital presence with their premium service offering.</p>
+
+            <!-- Typography -->
+            <p style="font-size:0.7rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:0;">Typography</p>
+            <div class="type-showcase">
+                <div class="type-heading-display">Outfit</div>
+                <div class="type-meta">Primary Typeface — Headlines &amp; Display</div>
+                <div class="type-body-display">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 !@#$%^&amp;*()</div>
             </div>
-        </div>
+            <div class="type-showcase" style="background:#050505;">
+                <div class="type-heading-display" style="font-family:var(--font-body); font-weight:400; font-size:clamp(2rem,4vw,4rem);">Inter</div>
+                <div class="type-meta">Secondary Typeface — Body &amp; UI</div>
+                <div class="type-body-display" style="font-size:0.95rem;">Regular, Medium, SemiBold, Bold — Used for descriptions, captions, labels, and supporting copy across all brand touchpoints.</div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+             SECTION 7 — BRAND APPLICATIONS
+        ═══════════════════════════════════════ -->
+        <section class="applications-full container animate-fade-up">
+            <span class="cs-label">Brand Applications</span>
+            <div class="cs-two-col" style="padding-top:2rem; border:none; padding-bottom: 2rem;">
+                <div class="cs-sticky-col">
+                    <h2>Identity in the real world.</h2>
+                </div>
+                <div class="cs-body-col">
+                    <p>The true test of any brand system is how it performs in application. Abiachow's identity was rolled out across social media assets, digital marketing materials, and platform interfaces — each adapted to context while maintaining total visual consistency.</p>
+                </div>
+            </div>
+            <div class="app-image-grid">
+                <div class="app-img-wrap wide-rect wide">
+                    <img src="work/abiachow social media designs.png" alt="Abiachow Social Media Designs">
+                </div>
+                <div class="app-img-wrap tall">
+                    <img src="work/abiachow logo.png" alt="Abiachow Logo Application" style="object-fit:contain; background:#fff; padding:2rem;">
+                </div>
+                <div class="app-img-wrap tall">
+                    <img src="work/abiachow social media designs.png" alt="Abiachow Brand Asset">
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+             SECTION 8 — OUTCOME
+        ═══════════════════════════════════════ -->
+        <section class="cs-outcome container animate-fade-up">
+            <span class="cs-label">Outcome</span>
+            <div class="cs-two-col" style="padding-top:2rem; border:none; padding-bottom: 2rem;">
+                <div class="cs-sticky-col">
+                    <h2>From invisible to unmistakable.</h2>
+                </div>
+                <div class="cs-body-col">
+                    <p>The completed brand system gave Abiachow a clear, cohesive identity that could compete confidently in a crowded market. The work delivered more than visuals — it gave the business a <strong>strategic foundation</strong> to build on as it grows.</p>
+                    <p>Every brand touchpoint now communicates a consistent story: fast, friendly, and trusted. That consistency is what turns first-time customers into loyal ones.</p>
+                </div>
+            </div>
+            <div class="outcome-points">
+                <div class="outcome-point">
+                    <div class="outcome-num">01</div>
+                    <div class="outcome-title">Improved Clarity</div>
+                    <div class="outcome-desc">The brand now communicates instantly what it stands for — no explanation needed.</div>
+                </div>
+                <div class="outcome-point">
+                    <div class="outcome-num">02</div>
+                    <div class="outcome-title">Stronger Positioning</div>
+                    <div class="outcome-desc">Abiachow is now positioned as the warm, reliable everyday choice in a competitive space.</div>
+                </div>
+                <div class="outcome-point">
+                    <div class="outcome-num">03</div>
+                    <div class="outcome-title">Increased Credibility</div>
+                    <div class="outcome-desc">A polished system signals professionalism and earns trust before the first interaction.</div>
+                </div>
+                <div class="outcome-point">
+                    <div class="outcome-num">04</div>
+                    <div class="outcome-title">Better Communication</div>
+                    <div class="outcome-desc">Every visual asset now tells the same story — consistently, across every channel.</div>
+                </div>
+                <div class="outcome-point">
+                    <div class="outcome-num">05</div>
+                    <div class="outcome-title">Long-Term Scalability</div>
+                    <div class="outcome-desc">The system is built to grow — adaptable across packaging, digital, and marketing as the brand expands.</div>
+                </div>
+                <div class="outcome-point">
+                    <div class="outcome-num">06</div>
+                    <div class="outcome-title">Strategic Foundation</div>
+                    <div class="outcome-desc">Brand guidelines ensure every future team member and collaborator maintains total consistency.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+             SECTION 9 — NEXT PROJECT
+        ═══════════════════════════════════════ -->
+        <section class="cs-next container animate-fade-up">
+            <span class="cs-label">Continue Exploring</span>
+            <a href="#" class="next-project-link">
+                <div class="next-img-wrap">
+                    <img src="work/stryx social media designs.png" alt="Stryx Social Media Design">
+                </div>
+                <div class="next-info">
+                    <div>
+                        <div class="next-meta-label">Next Project — Social Media Design</div>
+                        <div class="next-title">Social Media Design for Stryx</div>
+                    </div>
+                    <span class="next-arrow">→</span>
+                </div>
+            </a>
+        </section>
 
     </main>
 
-    <footer class="container">
-        <div>
-            <div class="logo">dimonitedesigns<span>.</span></div>
-            <p style="margin-top: 1rem; font-size: 0.9rem;">Solving problems through design.</p>
-        </div>
-        <div class="nav-links">
-            <a href="https://twitter.com" target="_blank">Twitter</a>
-            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-            <a href="https://dribbble.com" target="_blank">Dribbble</a>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="logo">dimonitedesigns<span>.</span></div>
+                <p class="footer-tagline">Strategic branding for ambitious B2B companies.</p>
+            </div>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/imo-blessed-chigozirim-502985322/" target="_blank" class="social-link">LinkedIn <span class="arrow">↗</span></a>
+                <a href="https://x.com/BlessedImo6328" target="_blank" class="social-link">X <span class="arrow">↗</span></a>
+                <a href="https://www.instagram.com/dimonite_designs" target="_blank" class="social-link">Instagram <span class="arrow">↗</span></a>
+                <a href="https://www.behance.net/dimonite" target="_blank" class="social-link">Behance <span class="arrow">↗</span></a>
+                <a href="mailto:workwithdimonite@gmail.com" class="social-link">Email <span class="arrow">↗</span></a>
+            </div>
         </div>
     </footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+        document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+    });
+</script>
 
 </body>
 </html>
