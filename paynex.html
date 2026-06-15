@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paynex — Project | Dimonite Designs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(10,10,10,0.85); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 100%; margin: 0; }
+        .cs-hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 150px; text-align: center; }
+        .cs-hero-title { font-family: var(--font-heading); font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 2rem; color: #fff; }
+        .cs-hero-image { width: 100%; max-width: 1000px; margin: 0 auto 4rem; border-radius: 12px; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 150px; margin-left: max(2rem, calc((100% - 1280px) / 2 + 2rem)); color: rgba(255,255,255,0.4); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; transition: color 0.3s ease; }
+        .back-link:hover { color: var(--accent-color); }
+        .back-link svg { transition: transform 0.3s ease; }
+        .back-link:hover svg { transform: translateX(-4px); }
+        .footer-container { display: flex; justify-content: space-between; align-items: flex-end; padding: var(--space-xl) 0; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">dimonitedesigns<span>.</span></div>
+        <div class="nav-links">
+            <a href="index.html">Work</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="contact.html" class="btn btn-primary">Hire me</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+    <a href="index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Work
+    </a>
+    <main class="cs-hero container">
+        <h1 class="cs-hero-title">Paynex</h1>
+        <img src="work/paynex.png" alt="Paynex" class="cs-hero-image">
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="logo">dimonitedesigns<span>.</span></div>
+                <p class="footer-tagline">Strategic branding for ambitious B2B companies.</p>
+            </div>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/imo-blessed-chigozirim-502985322/" target="_blank" class="social-link">LinkedIn</a>
+                <a href="https://x.com/BlessedImo6328" target="_blank" class="social-link">X</a>
+                <a href="https://www.instagram.com/dimonite_designs" target="_blank" class="social-link">Instagram</a>
+                <a href="https://www.behance.net/dimonite" target="_blank" class="social-link">Behance</a>
+                <a href="mailto:workwithdimonite@gmail.com" class="social-link">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+            document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+        let isScrolling;
+        window.addEventListener('scroll', () => {
+            window.clearTimeout(isScrolling);
+            document.body.classList.add('is-scrolling');
+            isScrolling = setTimeout(() => {
+                document.body.classList.remove('is-scrolling');
+            }, 150);
+        }, { passive: true });
+    </script>
+</body>
+</html>

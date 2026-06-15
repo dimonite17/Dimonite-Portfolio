@@ -496,7 +496,7 @@ nav {
     font-size: 1rem;
   }
 
-  .logo { z-index: 1001; position: relative; }
+  .logo { z-index: 1001; position: relative; font-size: 1.1rem; }
 
   /* General spacing */
   section { padding: var(--space-xl) 0; }
