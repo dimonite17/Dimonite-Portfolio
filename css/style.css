@@ -459,7 +459,7 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    height: 100vh;
     z-index: 999;
     flex-direction: column;
     justify-content: center;
@@ -543,10 +543,13 @@ nav {
   }
   .footer-socials {
     flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: space-between;
+    overflow-x: auto;
   }
-  .social-link { font-size: 0.85rem; padding: 0.35rem 0; }
+  .social-link { font-size: 0.75rem; padding: 0.35rem 0; white-space: nowrap; }
 }
 
 /* ═══════════════════════════════════════
