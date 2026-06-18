@@ -415,20 +415,17 @@
             .hero { min-height: auto; padding-top: 100px; padding-bottom: 3rem; }
             .hero-content { padding: 0 0.5rem; }
             .hero-headline { font-size: clamp(1.75rem, 7vw, 2.5rem) !important; line-height: 1.25 !important; max-width: 100% !important; margin-top: 0 !important; }
-            .hero-subheadline { font-size: 1rem !important; margin-bottom: var(--space-md); }
+            .hero-subheadline { font-size: 1rem !important; margin-bottom: var(--space-md); max-width: 100%; }
             .hero-actions { flex-direction: column; width: 100%; gap: 0.75rem; }
             .hero-actions .btn { width: 100%; text-align: center; justify-content: center; }
-            .hero-glow { width: 500px; height: 350px; }
-            .hero-glow-secondary { width: 200px; height: 150px; }
+            .hero-glow { width: 300px; height: 250px; top: -5%; }
+            .hero-glow-secondary { width: 150px; height: 100px; }
 
-            /* Marquee */
-            .marquee-card { height: 150px; }
-            .marquee-card[style*="width:320px"] { width: 280px !important; }
-            .marquee-card[style*="width:300px"] { width: 260px !important; }
-            .marquee-card[style*="width:350px"] { width: 310px !important; }
-            .marquee-card[style*="width:270px"] { width: 230px !important; }
-            .marquee-card[style*="width:260px"] { width: 220px !important; }
-            .marquee-card[style*="width:240px"] { width: 200px !important; }
+            /* Marquee — scale ALL cards uniformly */
+            .marquee-section { padding: 8px 0; }
+            .marquee-card { height: 160px; }
+            .marquee-card[style] { max-width: 240px !important; width: 240px !important; }
+            .marquee-track { gap: 8px; }
 
             /* Works grid */
             .works-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -440,40 +437,63 @@
 
             /* About section */
             .about-image {
-                height: 350px;
-                margin-top: 2rem;
+                height: 300px;
+                margin-top: 1.5rem;
                 border-radius: 20px;
             }
             .about-image::after { border-radius: 20px; }
             .about-text h2 { font-size: 1.2rem !important; white-space: normal !important; }
+            .about-text div { font-size: 1rem !important; }
+            .about-text p { font-size: 0.95rem !important; }
 
             /* Section headers */
             .works-section-header h2,
             .capabilities-header h2,
-            .testimonials-header h2 { font-size: 1.2rem; }
+            .testimonials-header h2 { font-size: 1.1rem; }
+            .works-section-header,
+            .capabilities-header,
+            .testimonials-header { flex-wrap: wrap; gap: 0.25rem; }
 
             /* Capabilities */
             .capabilities-grid { grid-template-columns: 1fr; }
-            .capability-card { padding: 2rem 1.5rem; }
-            .capability-title { font-size: clamp(1.3rem, 4vw, 1.6rem); }
+            .capability-card { padding: 1.75rem 1.25rem; }
+            .capability-title { font-size: clamp(1.2rem, 4vw, 1.5rem); }
             .capability-desc { font-size: 0.85rem; margin-bottom: 1.5rem; }
+            .capability-list li { font-size: 0.82rem; }
 
             /* Testimonials */
             .testimonials-grid { grid-template-columns: 1fr; }
-            .testimonial-card { padding: 2rem 1.5rem; }
-            .testimonial-quote-mark { font-size: 3.5rem; }
-            .testimonial-text { font-size: 0.95rem; }
+            .testimonial-card { padding: 1.75rem 1.25rem; gap: 1.25rem; }
+            .testimonial-quote-mark { font-size: 3rem; }
+            .testimonial-text { font-size: 0.92rem; line-height: 1.65; }
+            .testimonial-author { padding-top: 1rem; }
         }
 
         @media (max-width: 480px) {
-            .hero { padding-top: 90px; }
-            .hero-headline { font-size: clamp(1.5rem, 8vw, 2rem) !important; }
-            .hero-subheadline { font-size: 0.9rem !important; }
+            .hero { padding-top: 85px; }
+            .hero-headline { font-size: clamp(1.4rem, 7.5vw, 1.85rem) !important; }
+            .hero-subheadline { font-size: 0.88rem !important; }
             .marquee-card { height: 130px; }
-            .about-image { height: 280px; border-radius: 16px; }
+            .marquee-card[style] { max-width: 200px !important; width: 200px !important; }
+            .about-image { height: 250px; border-radius: 16px; }
             .about-image::after { border-radius: 16px; }
             .work-card-info { padding: 1rem; }
-            .work-card-title { font-size: 1.15rem; }
+            .work-card-title { font-size: 1.1rem; }
+            .work-card-desc { font-size: 0.78rem; }
+            .work-card-meta-row { margin-bottom: 0.6rem; }
+            .capability-card { padding: 1.5rem 1rem; }
+            .capability-desc { margin-bottom: 1.25rem; }
+            .testimonial-card { padding: 1.5rem 1rem; }
+        }
+
+        @media (max-width: 360px) {
+            .hero { padding-top: 80px; }
+            .hero-headline { font-size: 1.35rem !important; }
+            .hero-subheadline { font-size: 0.85rem !important; }
+            .marquee-card { height: 110px; }
+            .marquee-card[style] { max-width: 170px !important; width: 170px !important; }
+            .about-image { height: 220px; border-radius: 14px; }
+            .about-image::after { border-radius: 14px; }
         }
 
         /* ═══════════════════════════════════════
