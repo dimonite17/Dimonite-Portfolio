@@ -540,9 +540,12 @@ nav {
   /* Footer */
   .footer-container {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: flex-start;
   }
+  .footer-brand .logo { font-size: 1.2rem; margin-bottom: 0.25rem; }
+  .footer-tagline { font-size: 0.82rem; }
+  .site-footer { padding: var(--space-xl) 0 var(--space-lg); }
   .footer-socials {
     flex-direction: row;
     flex-wrap: nowrap;
